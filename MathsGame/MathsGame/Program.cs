@@ -41,38 +41,22 @@ void Menu(DateTime dateTime, string userName)
     {
       case "m":
       {
-        score = 0;
-        gameType = "Multiplication";
-        Console.WriteLine("\nHow many rounds do you want to play?");
-        roundNum = Console.ReadLine()!;
-        MultiplicationGame(roundNum);
+        MultiplicationGame();
         break;
       }
       case "d":
       {
-        score = 0;
-        gameType = "Division";
-        Console.WriteLine("\nHow many rounds do you want to play?");
-        roundNum = Console.ReadLine()!;
-        DivisionGame(roundNum);
+        DivisionGame();
         break;
       }
       case "a":
       {
-        score = 0;
-        gameType = "Addition";
-        Console.WriteLine("\nHow many rounds do you want to play?");
-        roundNum = Console.ReadLine()!;
-        AdditionGame(roundNum);
+        AdditionGame();
         break;
       }
       case "s":
       {
-        score = 0;
-        gameType = "Subtraction";
-        Console.WriteLine("\nHow many rounds do you want to play?");
-        roundNum = Console.ReadLine()!;
-        SubtractionGame(roundNum);
+        SubtractionGame();
         break;
       }
       case "h":
@@ -85,9 +69,14 @@ void Menu(DateTime dateTime, string userName)
 }
 
 //OPERATIONS
-void MultiplicationGame(string numberOfRounds)
+void MultiplicationGame()
 {
-  int totalRounds = int.Parse(numberOfRounds);
+  score = 0;
+  gameType = "Multiplication";
+  Console.WriteLine("\nHow many rounds do you want to play?");
+  roundNum = Console.ReadLine()!;
+  int totalRounds = int.Parse(roundNum);
+
   var random = new Random();
   Console.WriteLine("Selected Multiplication");
   for (int i = 1; i <= totalRounds; i++)
@@ -112,10 +101,15 @@ void MultiplicationGame(string numberOfRounds)
   }
 }
 
-void DivisionGame(string numberOfRounds)
+void DivisionGame()
 {
+  score = 0;
+  gameType = "Division";
+  Console.WriteLine("\nHow many rounds do you want to play?");
+  roundNum = Console.ReadLine()!;
+
   int i = 0;
-  int totalRounds = int.Parse(numberOfRounds);
+  int totalRounds = int.Parse(roundNum);
   var random = new Random();
   Console.WriteLine("Selected Division");
   while (i <= totalRounds)
@@ -146,9 +140,14 @@ void DivisionGame(string numberOfRounds)
   }
 }
 
-void AdditionGame(string numberOfRounds)
+void AdditionGame()
 {
-  int totalRounds = int.Parse(numberOfRounds);
+  score = 0;
+  gameType = "Addition";
+  Console.WriteLine("\nHow many rounds do you want to play?");
+  roundNum = Console.ReadLine()!;
+  int totalRounds = int.Parse(roundNum);
+
   var random = new Random();
   Console.WriteLine("Selected Addition");
   for (int i = 1; i <= totalRounds; i++)
@@ -173,9 +172,14 @@ void AdditionGame(string numberOfRounds)
   }
 }
 
-void SubtractionGame(string numberOfRounds)
+void SubtractionGame()
 {
-  int totalRounds = int.Parse(numberOfRounds);
+  score = 0;
+  gameType = "Addition";
+  Console.WriteLine("\nHow many rounds do you want to play?");
+  roundNum = Console.ReadLine()!;
+
+  int totalRounds = int.Parse(roundNum);
   var random = new Random();
   Console.WriteLine("Selected Subtraction");
   for (int i = 1; i <= totalRounds; i++)
