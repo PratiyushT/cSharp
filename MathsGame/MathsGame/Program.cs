@@ -4,6 +4,7 @@ var date = DateTime.UtcNow;
 int score = 0;
 string roundNum;
 var gamesList = new List<string>();
+string gameType = "";
 bool endGame = false;
 //METHOD INVOCATION
 string name = GetUserName();
@@ -30,33 +31,53 @@ void Menu(DateTime dateTime, string userName)
     Console.WriteLine(@"Choose ""A"" for Addition ");
     Console.WriteLine(@"Choose ""S"" for Subtraction ");
     Console.WriteLine("-------------------------------------");
+    Console.WriteLine(@"Press ""H"" to view game history");
 
     string choice = Console.ReadLine()!;
 
     Console.Clear();
-    Console.WriteLine("\nHow many rounds do you want to play?");
-    roundNum = Console.ReadLine()!;
     Console.Clear();
     switch (choice.ToLower())
     {
       case "m":
       {
+        score = 0;
+        gameType = "Multiplication";
+        Console.WriteLine("\nHow many rounds do you want to play?");
+        roundNum = Console.ReadLine()!;
         MultiplicationGame(roundNum);
         break;
       }
       case "d":
       {
+        score = 0;
+        gameType = "Division";
+        Console.WriteLine("\nHow many rounds do you want to play?");
+        roundNum = Console.ReadLine()!;
         DivisionGame(roundNum);
         break;
       }
       case "a":
       {
+        score = 0;
+        gameType = "Addition";
+        Console.WriteLine("\nHow many rounds do you want to play?");
+        roundNum = Console.ReadLine()!;
         AdditionGame(roundNum);
         break;
       }
       case "s":
       {
+        score = 0;
+        gameType = "Subtraction";
+        Console.WriteLine("\nHow many rounds do you want to play?");
+        roundNum = Console.ReadLine()!;
         SubtractionGame(roundNum);
+        break;
+      }
+      case "h":
+      {
+        ShowGameHistory();
         break;
       }
     }
@@ -191,6 +212,25 @@ void DisplayResult()
   Console.WriteLine($"Username: {name}");
   Console.WriteLine($"Total rounds played: {roundNum}");
   Console.WriteLine($"Your final score is {score}");
+  Console.Write(@"Press ""Q"" to quit the game(Anything else to continue): ");
+  var continueGame = Console.ReadLine()!;
+  gamesList.Add($"{DateTime.Now} - {gameType} - Rounds: {roundNum} Score: {score} "); //Adding to list
+  if (continueGame.ToLower() == "q") endGame = true;
+}
+
+void ShowGameHistory()
+{
+  Console.Clear();
+  Console.WriteLine("---------------------------------------------------------");
+  Console.WriteLine($"Username: {name}");
+  foreach (string gameLog in gamesList)
+  {
+    Console.WriteLine(gameLog);
+  }
+
+
+  Console.WriteLine("---------------------------------------------------------");
+
   Console.Write(@"Press ""Q"" to quit the game(Anything else to continue): ");
   var continueGame = Console.ReadLine()!;
   if (continueGame.ToLower() == "q") endGame = true;
