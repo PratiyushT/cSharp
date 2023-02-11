@@ -3,7 +3,8 @@
 var date = DateTime.UtcNow;
 int score = 0;
 string roundNum;
-
+var gamesList = new List<string>();
+bool endGame = false;
 //METHOD INVOCATION
 string name = GetUserName();
 Menu(date, name);
@@ -19,43 +20,45 @@ string GetUserName()
 //Display initial menu after asking name.
 void Menu(DateTime dateTime, string userName)
 {
-  Console.Clear();
-  Console.WriteLine("-------------------------------------\n");
-  Console.WriteLine($"Time: {dateTime}");
-  Console.WriteLine($"Welcome {userName}\n");
-  Console.WriteLine(@"Choose ""M"" for Multiplication ");
-  Console.WriteLine(@"Choose ""D"" for Division ");
-  Console.WriteLine(@"Choose ""A"" for Addition ");
-  Console.WriteLine(@"Choose ""S"" for Subtraction ");
-  Console.WriteLine("\n-------------------------------------");
-
-  string choice = Console.ReadLine()!;
-
-  Console.Clear();
-  Console.WriteLine("\nHow many rounds do you want to play?");
-  roundNum = Console.ReadLine()!;
-
-  switch (choice.ToLower())
+  while (!endGame)
   {
-    case "m":
+    Console.Clear();
+    Console.WriteLine($"Time: {dateTime}");
+    Console.WriteLine($"Welcome {userName}\n");
+    Console.WriteLine(@"Choose ""M"" for Multiplication ");
+    Console.WriteLine(@"Choose ""D"" for Division ");
+    Console.WriteLine(@"Choose ""A"" for Addition ");
+    Console.WriteLine(@"Choose ""S"" for Subtraction ");
+    Console.WriteLine("-------------------------------------");
+
+    string choice = Console.ReadLine()!;
+
+    Console.Clear();
+    Console.WriteLine("\nHow many rounds do you want to play?");
+    roundNum = Console.ReadLine()!;
+    Console.Clear();
+    switch (choice.ToLower())
     {
-      MultiplicationGame(roundNum);
-      break;
-    }
-    case "d":
-    {
-      DivisionGame(roundNum);
-      break;
-    }
-    case "a":
-    {
-      AdditionGame(roundNum);
-      break;
-    }
-    case "s":
-    {
-      SubtractionGame(roundNum);
-      break;
+      case "m":
+      {
+        MultiplicationGame(roundNum);
+        break;
+      }
+      case "d":
+      {
+        DivisionGame(roundNum);
+        break;
+      }
+      case "a":
+      {
+        AdditionGame(roundNum);
+        break;
+      }
+      case "s":
+      {
+        SubtractionGame(roundNum);
+        break;
+      }
     }
   }
 }
@@ -65,7 +68,6 @@ void MultiplicationGame(string numberOfRounds)
 {
   int totalRounds = int.Parse(numberOfRounds);
   var random = new Random();
-  Console.Clear();
   Console.WriteLine("Selected Multiplication");
   for (int i = 1; i <= totalRounds; i++)
   {
@@ -94,7 +96,6 @@ void DivisionGame(string numberOfRounds)
   int i = 0;
   int totalRounds = int.Parse(numberOfRounds);
   var random = new Random();
-  Console.Clear();
   Console.WriteLine("Selected Division");
   while (i <= totalRounds)
   {
@@ -128,7 +129,6 @@ void AdditionGame(string numberOfRounds)
 {
   int totalRounds = int.Parse(numberOfRounds);
   var random = new Random();
-  Console.Clear();
   Console.WriteLine("Selected Addition");
   for (int i = 1; i <= totalRounds; i++)
   {
@@ -156,7 +156,6 @@ void SubtractionGame(string numberOfRounds)
 {
   int totalRounds = int.Parse(numberOfRounds);
   var random = new Random();
-  Console.Clear();
   Console.WriteLine("Selected Subtraction");
   for (int i = 1; i <= totalRounds; i++)
   {
@@ -192,4 +191,7 @@ void DisplayResult()
   Console.WriteLine($"Username: {name}");
   Console.WriteLine($"Total rounds played: {roundNum}");
   Console.WriteLine($"Your final score is {score}");
+  Console.Write(@"Press ""Q"" to quit the game(Anything else to continue): ");
+  var continueGame = Console.ReadLine()!;
+  if (continueGame.ToLower() == "q") endGame = true;
 }
