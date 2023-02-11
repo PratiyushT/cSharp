@@ -49,12 +49,12 @@ void Menu(DateTime dateTime, string userName)
     }
     case "a":
     {
-      AdditionGame();
+      AdditionGame(roundNum);
       break;
     }
     case "s":
     {
-      SubtractionGame();
+      SubtractionGame(roundNum);
       break;
     }
   }
@@ -124,14 +124,60 @@ void DivisionGame(string numberOfRounds)
   }
 }
 
-void AdditionGame()
+void AdditionGame(string numberOfRounds)
 {
-  Console.WriteLine("Selected Addition");
+  int totalRounds = int.Parse(numberOfRounds);
+  var random = new Random();
+  Console.Clear();
+  Console.WriteLine("Selected Multiplication");
+  for (int i = 1; i <= totalRounds; i++)
+  {
+    int firstNumber = random.Next(0, 9);
+    int secondNumber = random.Next(0, 9);
+
+    Console.WriteLine($"Score is: {score}");
+    Console.Write($"{i}) {firstNumber} + {secondNumber} = ?\nAns: ");
+    var answer = Console.ReadLine();
+
+    if (int.Parse(answer!) == firstNumber + secondNumber)
+      CorrectAnswer();
+    else
+      Console.WriteLine($"You have entered the wrong answer.\nCorrect Answer:{firstNumber + secondNumber}");
+
+    if (i == totalRounds)
+    {
+      DisplayResult();
+      break;
+    }
+  }
 }
 
-void SubtractionGame()
+void SubtractionGame(string numberOfRounds)
 {
-  Console.WriteLine("Selected Subtraction");
+  int totalRounds = int.Parse(numberOfRounds);
+  var random = new Random();
+  Console.Clear();
+  Console.WriteLine("Selected Multiplication");
+  for (int i = 1; i <= totalRounds; i++)
+  {
+    int firstNumber = random.Next(0, 9);
+    int secondNumber = random.Next(0, 9);
+
+    Console.WriteLine($"Score is: {score}");
+    Console.Write($"{i}) {firstNumber} - {secondNumber} = ?\nAns: ");
+    var answer = Console.ReadLine();
+
+    if (int.Parse(answer!) == firstNumber - secondNumber)
+      CorrectAnswer();
+    else
+      Console.WriteLine($"You have entered the wrong answer.\nCorrect Answer:{firstNumber - secondNumber}");
+
+    if (i == totalRounds)
+    {
+      DisplayResult();
+      break;
+    }
+  }
 }
 
 void CorrectAnswer()
