@@ -1,10 +1,10 @@
 ﻿//VARIABLE INITIALIZATION OR DECLARATION
 
 var date = DateTime.UtcNow;
-int score = 0;
+int score;
+string gameType;
 string roundNum;
 var gamesList = new List<string>();
-string gameType = "";
 bool endGame = false;
 //METHOD INVOCATION
 string name = GetUserName();
