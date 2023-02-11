@@ -95,7 +95,7 @@ void DivisionGame(string numberOfRounds)
   int totalRounds = int.Parse(numberOfRounds);
   var random = new Random();
   Console.Clear();
-  Console.WriteLine("Selected Multiplication");
+  Console.WriteLine("Selected Division");
   while (i <= totalRounds)
   {
     {
@@ -129,7 +129,7 @@ void AdditionGame(string numberOfRounds)
   int totalRounds = int.Parse(numberOfRounds);
   var random = new Random();
   Console.Clear();
-  Console.WriteLine("Selected Multiplication");
+  Console.WriteLine("Selected Addition");
   for (int i = 1; i <= totalRounds; i++)
   {
     int firstNumber = random.Next(0, 9);
@@ -157,7 +157,7 @@ void SubtractionGame(string numberOfRounds)
   int totalRounds = int.Parse(numberOfRounds);
   var random = new Random();
   Console.Clear();
-  Console.WriteLine("Selected Multiplication");
+  Console.WriteLine("Selected Subtraction");
   for (int i = 1; i <= totalRounds; i++)
   {
     int firstNumber = random.Next(0, 9);
